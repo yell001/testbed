@@ -33,12 +33,18 @@ slideContainer.addEventListener('touchend', function(e) {
   var diffX = endX - startX;
   var diffY = endY - startY;
 
-  // Check if swipe was more horizontal than vertical
-  if(Math.abs(diffX) > Math.abs(diffY) * 1.5) {
-    if (diffX < 0) {
-      plusSlides(1); // 오른쪽으로 슬라이드
-    } else {
-      plusSlides(-1); // 왼쪽으로 슬라이드
+  // Calculate the distance swiped
+  var distance = Math.sqrt(diffX * diffX + diffY * diffY);
+
+  // Only perform a slide if the swipe was a significant distance
+  if (distance > 50) {
+    // Check if swipe was more horizontal than vertical
+    if(Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+      if (diffX < 0) {
+        plusSlides(1); // 오른쪽으로 슬라이드
+      } else {
+        plusSlides(-1); // 왼쪽으로 슬라이드
+      }
     }
   }
 });
