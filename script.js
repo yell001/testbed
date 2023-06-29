@@ -33,8 +33,8 @@ slideContainer.addEventListener('touchend', function(e) {
   var diffX = endX - startX;
   var diffY = endY - startY;
 
-  // Check if swipe was left-to-right or right-to-left
-  if (Math.abs(diffX) > Math.abs(diffY)) {
+  // Check if swipe was more horizontal than vertical
+  if(Math.abs(diffX) > Math.abs(diffY) * 1.5) {
     if (diffX < 0) {
       plusSlides(1); // 오른쪽으로 슬라이드
     } else {
