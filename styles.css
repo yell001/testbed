@@ -1,0 +1,13 @@
+* {box-sizing:border-box}
+
+/* 슬라이드 컨테이너 */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* 숨겨진 이미지 */
+.mySlides {
+  display: none;
+}
