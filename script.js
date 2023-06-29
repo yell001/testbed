@@ -18,19 +18,27 @@ function showSlides(n) {
   slides[slideIndex].style.display = "block";
 }
 
-var startPos;
-var endPos;
+var startX, startY, endX, endY;
 var slideContainer = document.querySelector('.slideshow-container');
 
 slideContainer.addEventListener('touchstart', function(e) {
-  startPos = e.changedTouches[0].clientX;
+  startX = e.changedTouches[0].clientX;
+  startY = e.changedTouches[0].clientY;
 });
 
 slideContainer.addEventListener('touchend', function(e) {
-  endPos = e.changedTouches[0].clientX;
-  if (startPos - endPos > 0) {
-    plusSlides(1); // 오른쪽으로 슬라이드
-  } else {
-    plusSlides(-1); // 왼쪽으로 슬라이드
+  endX = e.changedTouches[0].clientX;
+  endY = e.changedTouches[0].clientY;
+
+  var diffX = endX - startX;
+  var diffY = endY - startY;
+
+  // Check if swipe was left-to-right or right-to-left
+  if (Math.abs(diffX) > Math.abs(diffY)) {
+    if (diffX < 0) {
+      plusSlides(1); // 오른쪽으로 슬라이드
+    } else {
+      plusSlides(-1); // 왼쪽으로 슬라이드
+    }
   }
 });
