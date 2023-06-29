@@ -36,15 +36,12 @@ slideContainer.addEventListener('touchend', function(e) {
   // Calculate the distance swiped
   var distance = Math.sqrt(diffX * diffX + diffY * diffY);
 
-  // Only perform a slide if the swipe was a significant distance
-  if (distance > 50) {
-    // Check if swipe was more horizontal than vertical
-    if(Math.abs(diffX) > Math.abs(diffY) * 1.5) {
-      if (diffX < 0) {
-        plusSlides(1); // 오른쪽으로 슬라이드
-      } else {
-        plusSlides(-1); // 왼쪽으로 슬라이드
-      }
+  // Only perform a slide if the swipe was a significant distance and more horizontal than vertical
+  if (distance > 100 && Math.abs(diffX) > Math.abs(diffY)) {
+    if (diffX < 0) {
+      plusSlides(1); // 오른쪽으로 슬라이드
+    } else {
+      plusSlides(-1); // 왼쪽으로 슬라이드
     }
   }
 });
