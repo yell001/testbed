@@ -10,6 +10,13 @@ function plusSlides(n) {
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
+  var slideHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+  // Set the max-height of each slide
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.maxHeight = slideHeight + 'px';
+  }
+  
   if (n >= slides.length) {slideIndex = 0}
   if (n < 0) {slideIndex = slides.length-1}
   for (i = 0; i < slides.length; i++) {
@@ -44,4 +51,9 @@ slideContainer.addEventListener('touchend', function(e) {
       plusSlides(-1); // 왼쪽으로 슬라이드
     }
   }
+});
+
+// Update the max-height of slides when the window is resized
+window.addEventListener('resize', function() {
+  showSlides(slideIndex);
 });
